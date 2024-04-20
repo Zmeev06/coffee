@@ -1,8 +1,12 @@
-import Routing from "./index.vue";
+import Routing from "./index.vue"
 
 export const routes = [
-  { path: "/login", component: () => import("./LoginPage"), name: "Login" },
-  
-];
+	{ path: "/login", component: () => import("./LoginPage"), name: "Login" },
+	{
+		path: "/personal_cabinet",
+		component: () => import("./PersonalCabinetPage"),
+		name: "lk"
+	}
+]
 
-export { Routing };
+export { Routing }

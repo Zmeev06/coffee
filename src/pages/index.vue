@@ -30,11 +30,9 @@ router.afterEach(() => {
 
 <template> <a-config-provider :theme="{
   token: {
-    colorPrimary: '#FFDD00',
+    colorPrimary: '#000000',
   },
 }">
-    <a-button />
-
     <RouterView v-slot="{ Component, route }">
       <template v-if="Component">
         <Transition :name="getTransitionName(route.meta)">
