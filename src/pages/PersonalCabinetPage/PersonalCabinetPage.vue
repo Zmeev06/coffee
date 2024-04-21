@@ -1,6 +1,7 @@
 <script setup lang='ts'>
 import { UserCabinet } from '@//widgets/UserCabinet';
 import { MainLayout } from '@shared/layouts/MainLayout';
+
 </script>
 <template>
   <MainLayout>
@@ -8,7 +9,6 @@ import { MainLayout } from '@shared/layouts/MainLayout';
       <div class="flex gap-10">
         <UserCabinet />
       </div>
-
     </div>
   </MainLayout>
 </template>

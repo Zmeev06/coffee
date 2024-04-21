@@ -1,5 +1,6 @@
 <script setup lang='ts'>
 import { ref } from 'vue';
+import { CoffieBreakCard } from '@features/CoffieBreak';
 
 const interest = ref()
 
@@ -10,9 +11,7 @@ const options = [...Array(25)].map((_, i) => ({ value: (i + 10).toString(36) + (
     <a-select v-model:value="interest" mode="tags" style="width: 100%" placeholder="Ваши интересы"
       :options="options"></a-select>
     <a-card title="Мероприятие">
-      <p>card content</p>
-      <p>card content</p>
-      <p>card content</p>
+      <CoffieBreakCard/>
     </a-card>
   </div>
 </template>
