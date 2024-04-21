@@ -2,6 +2,11 @@
 import {  ref } from "vue";
 import { loginUser, loginHashCheck } from "../api/LoginService";
 import { useRouter } from "vue-router";
+import {
+  GoogleSignInButton,
+  type CredentialResponse,
+} from "vue3-google-signin";
+
 
 interface FormState {
   username: string;
@@ -34,6 +39,18 @@ const loginHandler = async () => {
       router.push("/search");
     }
   }
+};
+
+
+// handle success event
+const handleLoginSuccess = (response: CredentialResponse) => {
+  const { credential } = response;
+  console.log("Access Token", credential);
+};
+
+// handle an error event
+const handleLoginError = () => {
+  console.error("Login failed");
 };
 </script>
 <template lang="html">
@@ -76,8 +93,15 @@ const loginHandler = async () => {
 
     <a-form-item class="w-full">
       <a-button type="primary" ghost style="width: 100%" @click="loginHandler"
-        >Вход</a-button
-      >
+        >Войти</a-button>
+        <h3 class="mx-auto w-fit">или</h3>
+
+        <div class="mx-auto w-fit">
+          <GoogleSignInButton
+          @success="handleLoginSuccess"
+          @error="handleLoginError"
+        ></GoogleSignInButton>
+        </div>
     </a-form-item>
   </a-form>
 </template>
