@@ -2,7 +2,7 @@
 
 </script>
 <template>
-  <div class="flex flex-col gap-4 items-center w-fit">
+  <div class="flex flex-col gap-4 items-center w-fit ">
     <div class=" rounded-full border p-2">
       <div class="h-[250px] w-[250px] overflow-hidden rounded-full bg-gray-400">
         <slot name="photo" />
