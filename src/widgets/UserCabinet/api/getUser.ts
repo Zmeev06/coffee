@@ -1,30 +1,21 @@
 import { AxiosError } from "axios";
 import { ApiClient } from "@shared/api/Client";
-import { message } from "ant-design-vue";
 
-export const gooloogoolooLogin = async (
-  token: string
-) => {
-  const loginData = {
-   token
-  };
-
+export const getUser = async () => {
   try {
     const response = await ApiClient({
-      data: loginData,
-      method: "POST",
-      url: "service-auth/google-auth",
+      method: "GET",
+      url: `service-client/user/get`,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("oggettoToken")}`,
+      },
     });
 
     const { data, status } = response;
     if (status === 200) {
-      const jwt = data.data.token;
-
-      // localStorage.setItem("JwtToken", jwt);
       return { data, status };
     } else {
       console.error(`Ошибка при входе. Статус: ${status}`);
-      message.error("Ошибка при входе.");
       return { data: null, status };
     }
   } catch (error) {

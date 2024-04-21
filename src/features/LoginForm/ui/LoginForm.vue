@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {  ref } from "vue";
-import { loginUser, loginHashCheck } from "../api/LoginService";
+import { loginUser } from "../api/LoginService";
 import { useRouter } from "vue-router";
 import {
   GoogleSignInButton,
@@ -23,29 +23,28 @@ const formState = ref<FormState>({
 const router = useRouter();
 
 const loginHandler = async () => {
-  const { data: loginData, status: loginStatus } = await loginUser(
+  const { data, status } = await loginUser(
     formState.value.username,
     formState.value.password,
   );
 
-  if (loginStatus === 200) {
-    const { data: loginHashData, status: loginHashStatus } =
-      await loginHashCheck(
-        loginData.data.username,
-        loginData.data.hash,
-        formState.value.remember,
-      );
-    if (loginHashStatus === 200) {
-      router.push("/search");
-    }
+  if (status === 200) {
+    localStorage.setItem('oggettoToken', data.data.token)
+    router.push('/personal_cabinet')
   }
 };
 
+// const goloogoloo = async(token: string) => {
+//   const { data, status } = await gooloogoolooLogin(token)
+//   if (status === 200) {
+//     console.log(data);
+//   }
+// }
 
 // handle success event
 const handleLoginSuccess = (response: CredentialResponse) => {
-  const { credential } = response;
-  console.log("Access Token", credential);
+
+  // goloogoloo(credential)
 };
 
 // handle an error event

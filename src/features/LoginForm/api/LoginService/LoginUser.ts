@@ -3,21 +3,19 @@ import { ApiClient } from "@shared/api/Client";
 import { message } from "ant-design-vue";
 
 export const loginUser = async (
-  username: string,
+  email: string,
   password: string,
-  // remember: boolean
 ) => {
   const loginData = {
-    username,
+    email,
     password,
-    // remember: remember ? 1 : 0
   };
 
   try {
     const response = await ApiClient({
       data: loginData,
       method: "POST",
-      url: "service-auth/sing-in/hash/generate",
+      url: "service-auth/sign-in",
     });
 
     const { data, status } = response;

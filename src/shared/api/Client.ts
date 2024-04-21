@@ -17,7 +17,7 @@ interface Client {
 const REQUEST_TIMEOUT = 5000;
 
 const API = axios.create({
-  baseURL: "https://osago.web-gen.ru:444/api",
+  baseURL: "https://oggetto.web-gen.ru:444/api/",
   timeout: REQUEST_TIMEOUT,
   headers: {
     Accept: "application/json",
