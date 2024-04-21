@@ -23,14 +23,22 @@ const date_value = ref<Dayjs>(dayjs('08:00:00', 'HH:mm:ss'));
             <p>22.04.2024</p>
 
         </div>
-        <a-space align="start">
+        <div class="flex justify-between">
             <a-radio-group v-model:value="value">
                 <a-radio :style="radioStyle" :value="1">10 минут</a-radio>
                 <a-radio :style="radioStyle" :value="2">20 минут</a-radio>
                 <a-radio :style="radioStyle" :value="3">30 минут</a-radio>
             </a-radio-group>
-            <a-time-picker v-model:value="date_value" />
-        </a-space>
+            <div>
+                <p>Выберите время</p>
+                <a-time-picker v-model:value="date_value" />
+            </div>
+        </div>
+
+        <div class="flex justify-between mt-1">
+            <a-button type="text">Принять</a-button>
+            <a-button type="primary" danger ghost>Отказаться</a-button>
+        </div>
         
     </div>
     
