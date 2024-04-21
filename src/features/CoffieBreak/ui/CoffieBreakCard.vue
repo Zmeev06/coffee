@@ -1,6 +1,8 @@
 <script setup lang="ts">
 
 import { reactive, ref } from 'vue';
+import { Passing } from '@features/Passing';
+
 const value = ref<number>(1);
 const radioStyle = reactive({
   display: 'flex',
@@ -12,7 +14,24 @@ import dayjs, { Dayjs } from 'dayjs';
 
 const date_value = ref<Dayjs>(dayjs('08:00:00', 'HH:mm:ss'));
 
+const loading = ref<boolean>(false);
+const open = ref<boolean>(false);
 
+const showModal = () => {
+  open.value = true;
+};
+
+const handleOk = () => {
+  loading.value = true;
+  setTimeout(() => {
+    loading.value = false;
+    open.value = false;
+  }, 2000);
+};
+
+const handleCancel = () => {
+  open.value = false;
+};
 
 </script>
 
@@ -37,9 +56,16 @@ const date_value = ref<Dayjs>(dayjs('08:00:00', 'HH:mm:ss'));
 
         <div class="flex justify-between mt-1">
             <a-button type="text">Принять</a-button>
-            <a-button type="primary" danger ghost>Отказаться</a-button>
+            <a-button type="primary" danger ghost @click="showModal">Отказаться</a-button>
         </div>
-        
+
+        <a-modal v-model:open="open" @ok="handleOk">
+            <template #footer>
+                <a-button key="back" @click="handleCancel">Отмена</a-button>
+                <a-button key="submit" type="primary" :loading="loading" @click="handleOk" >Отравить</a-button>
+            </template>
+            <Passing/>
+         </a-modal>
     </div>
     
 </template>

@@ -38,7 +38,7 @@ const sphere = ref('0')
         <a-input v-model:value="surname" class="w-[300px]" placeholder="Фамилия" />
         <a-input v-model:value="name" class="w-[300px]" placeholder="Имя" />
         <a-input v-model:value="patronymic" class="w-[300px]" placeholder="Отчество" />
-        <a-date-picker v-model:value="date" format="DD.MM.YYYY" />
+        <a-date-picker v-model:value="date" format="DD.MM.YYYY" placeholder="Дата рождения"/>
         <a-input v-model:value="email" class="w-[300px]" placeholder="Email" />
         <a-input v-model:value="gmail" class="w-[300px]" placeholder="Gmail" />
         <a-input v-model:value="tg" class="w-[300px]" placeholder="Telegram" />

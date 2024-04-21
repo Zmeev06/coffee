@@ -6,7 +6,9 @@ export const routes = [
 		path: "/personal_cabinet",
 		component: () => import("./PersonalCabinetPage"),
 		name: "lk"
-	}
+	},
+	{ path: "/admin_panel", component: () => import("./AdminPanelPage"), name: "Admin" }
+	
 ]
 
 export { Routing }
